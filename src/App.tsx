@@ -1,6 +1,7 @@
 import './App.css';
 import React, { useRef, useState } from "react";
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Formik, Form, ErrorMessage,Field } from "formik";
+import { Button, InputField, } from "@vfs-digital-channels/ns-react-components";
 import * as htmlToImage from "html-to-image";
 
 interface FormValues {
@@ -58,26 +59,24 @@ const App: React.FC = () => {
           <div ref={formRef}>
             <Form className="form">
               <div className="form-group">
-                <label htmlFor="name" className="label">Name:</label>
-                <Field type="text" name="name" className="input" />
+                <Field component={InputField} placeholder="Name" name="name"  inputMode='numeric' />
                 <ErrorMessage name="name" component="div" className="error" />
               </div>
 
               <div className="form-group">
-                <label htmlFor="email" className="label">Email:</label>
-                <Field type="email" name="email" className="input" />
+                <Field component={InputField} placeholder="email" name="email"  inputMode='email' />
                 <ErrorMessage name="email" component="div" className="error" />
               </div>
 
               <div className="form-group">
                 <label htmlFor="password" className="label">Password:</label>
-                <Field type="password" name="password" className="input" />
+                <Field component={InputField} placeholder=" Password" name="password"  inputMode='password' />
                 <ErrorMessage name="password" component="div" className="error" />
               </div>
 
               <div className="form-group">
                 <label htmlFor="confirmPassword" className="label">Confirm Password:</label>
-                <Field type="password" name="confirmPassword" className="input" />
+                <Field component={InputField} placeholder="confirm Password" name="confirmPassword"  inputMode='password' />
                 <ErrorMessage name="confirmPassword" component="div" className="error" />
               </div>
 
