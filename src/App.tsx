@@ -1,8 +1,8 @@
 import './App.css';
 import React, { useRef, useState } from "react";
 import { Formik, Form, ErrorMessage,Field } from "formik";
-import {  InputField, } from "@vfs-digital-channels/ns-react-components";
 import * as htmlToImage from "html-to-image";
+import { InputField } from './components/InputField';
 
 interface FormValues {
   name: string;

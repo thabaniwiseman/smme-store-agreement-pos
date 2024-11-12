@@ -27,20 +27,20 @@ const InputField = React.forwardRef<HTMLInputElement, InputProps>(
     );
 
     const containerClass = cn(
-      'ns-max-w-130 ns-h-16 ns-relative ns-text-left ns-text-ellipsis ns-w-full ns-black ns-text-base ',
+      'max-w-130 h-16 relative text-left text-ellipsis w-full black text-base ',
       {
-        ['ns-mb-5']: props.hint || (fieldTouched && fieldError),
+        ['mb-5']: props.hint || (fieldTouched && fieldError),
       },
       className,
     );
 
     const inputClass = cn(
-      'ns-peer ns-flex ns-h-16 ns-w-full ns-max-w-130 ns-rounded-md ns-bg-white-50 ns-border ns-text-black \
-    ns-border-solid ns-border-grey-100 ns-pl-5 ns-pr-9 ns-pt-3.5 ns-text-base \
-    ns-shadow-sm ns-outline-none ns-placeholder-transparent \
+      'peer flex h-16 w-full max-w-130 rounded-md bg-white-50 border text-black \
+    border-solid border-grey-100 pl-5 pr-9 pt-3.5 text-base \
+    shadow-sm outline-none placeholder-transparent \
     disabled:cursor-not-allowed disabled:opacity-50 hide-spinner ',
       {
-        ['ns-text-2xl']: type === 'password',
+        ['text-2xl']: type === 'password',
       },
     );
 
@@ -56,8 +56,8 @@ const InputField = React.forwardRef<HTMLInputElement, InputProps>(
           {...props}
         />
         <label
-          className='ns-absolute ns-left-5 ns-top-1 ns-text-xs ns-text-black peer-focus:ns-top-1 peer-focus:text-sm peer-focus:ns-text-xs
-          peer-focus:ns-text-black peer-placeholder-shown:ns-top-[45%] peer-placeholder-shown:ns-text-base peer-placeholder-shown:ns-text-black ns-pointer-events-none ns-w-[80%] ns-transition-all'
+          className='absolute left-5 top-1 text-xs text-black peer-focus:top-1 peer-focus:text-sm peer-focus:text-xs
+          peer-focus:text-black peer-placeholder-shown:top-[45%] peer-placeholder-shown:text-base peer-placeholder-shown:text-black pointer-events-none w-[80%] transition-all'
           htmlFor={name}
         >
           {placeholder}
@@ -66,7 +66,7 @@ const InputField = React.forwardRef<HTMLInputElement, InputProps>(
         {type === 'password' && (
           <button
             type='button'
-            className={`ns-absolute ns-h-6 ns-w-6  ns-right-5 ns-top-[45%] ns-text-grey-400`}
+            className={`absolute h-6 w-6  right-5 top-[45%] text-grey-400`}
             onClick={() => setShowPassword((prev) => !prev)}
           >
             {showPassword ? (
@@ -107,12 +107,12 @@ const InputField = React.forwardRef<HTMLInputElement, InputProps>(
           </button>
         )}
 
-        <span className='ns-absolute ns-left-0 ns-right-0 ns-bottom-0 ns-h-px ns-ml-5 ns-mr-5 ns-border-0 ns-bg-black' />
+        <span className='absolute bottom-0 left-0 right-0 h-px ml-5 mr-5 bg-black border-0' />
 
         {props.hint && !(fieldTouched && fieldError) ? (
-          <p className='ns-text-xs ns-text-grey-300 ns-ml-4 ns-mt-1 ns-pt-1'>{props.hint}</p>
+          <p className='pt-1 mt-1 ml-4 text-xs text-grey-300'>{props.hint}</p>
         ) : (
-          <p className='ns-text-xs ns-text-red-600 ns-ml-4 ns-mt-1 ns-pt-1 ns-flex ns-gap-x-2'>
+          <p className='flex pt-1 mt-1 ml-4 text-xs text-red-600 gap-x-2'>
             {fieldTouched && fieldError && (
               <>
                 <svg
