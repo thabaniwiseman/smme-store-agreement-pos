@@ -47,9 +47,9 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
-      - name: Install modules 
+      - name: Install dependencies
         run: yarn install
-
+       
       - name: Build smme-poc 
         run: yarn build
 
