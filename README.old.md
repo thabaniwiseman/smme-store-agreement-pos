@@ -1,1 +1,0 @@
-# smme-store-agreement-pos

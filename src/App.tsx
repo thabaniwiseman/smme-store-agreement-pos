@@ -1,7 +1,7 @@
 import './App.css';
 import React, { useRef, useState } from "react";
 import { Formik, Form, ErrorMessage,Field } from "formik";
-import { Button, InputField, } from "@vfs-digital-channels/ns-react-components";
+import {  InputField, } from "@vfs-digital-channels/ns-react-components";
 import * as htmlToImage from "html-to-image";
 
 interface FormValues {
@@ -16,6 +16,9 @@ const App: React.FC = () => {
   const [base64Image, setBase64Image] = useState<string | null>(null);
 
   const handleSubmit = async (values: FormValues) => {
+
+    console.log(values);
+    
     if (formRef.current) {
       try {
         const dataUrl = await htmlToImage.toPng(formRef.current);
