@@ -1,6 +1,6 @@
 import './App.css';
 import React, { useRef, useState } from "react";
-import { Formik, Form, ErrorMessage,Field } from "formik";
+import { Formik, Form, ErrorMessage, Field } from "formik";
 import * as htmlToImage from "html-to-image";
 import { InputField } from './components/InputField';
 
@@ -16,12 +16,22 @@ const App: React.FC = () => {
   const [base64Image, setBase64Image] = useState<string | null>(null);
 
   const handleSubmit = async (values: FormValues) => {
-
     console.log(values);
     
     if (formRef.current) {
       try {
-        const dataUrl = await htmlToImage.toPng(formRef.current);
+        // await loadImages(formRef.current);
+        const dataUrl = await htmlToImage.toPng(formRef.current, {
+          width: formRef.current.offsetWidth,
+          height: formRef.current.offsetHeight,
+          style: {
+            transform: 'scale(1)',
+            transformOrigin: 'top left',
+          },
+          canvasWidth: formRef.current.offsetWidth * window.devicePixelRatio,
+          canvasHeight: formRef.current.offsetHeight * window.devicePixelRatio,
+          pixelRatio: window.devicePixelRatio,
+        });
         setBase64Image(dataUrl);
         await navigator.clipboard.writeText(dataUrl);
         alert("Screenshot copied to clipboard!");
@@ -62,24 +72,24 @@ const App: React.FC = () => {
           <div ref={formRef}>
             <Form className="form">
               <div className="form-group">
-                <Field component={InputField} placeholder="Name" name="name"  inputMode='numeric' />
+                <Field component={InputField} placeholder="Name" name="name" inputMode='numeric' />
                 <ErrorMessage name="name" component="div" className="error" />
               </div>
 
               <div className="form-group">
-                <Field component={InputField} placeholder="email" name="email"  inputMode='email' />
+                <Field component={InputField} placeholder="email" name="email" inputMode='email' />
                 <ErrorMessage name="email" component="div" className="error" />
               </div>
 
               <div className="form-group">
                 <label htmlFor="password" className="label">Password:</label>
-                <Field component={InputField} placeholder=" Password" name="password"  inputMode='password' />
+                <Field component={InputField} placeholder="Password" name="password" inputMode='password' />
                 <ErrorMessage name="password" component="div" className="error" />
               </div>
 
               <div className="form-group">
                 <label htmlFor="confirmPassword" className="label">Confirm Password:</label>
-                <Field component={InputField} placeholder="confirm Password" name="confirmPassword"  inputMode='password' />
+                <Field component={InputField} placeholder="confirm Password" name="confirmPassword" inputMode='password' />
                 <ErrorMessage name="confirmPassword" component="div" className="error" />
               </div>
 
