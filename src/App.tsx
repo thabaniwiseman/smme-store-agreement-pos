@@ -1,7 +1,8 @@
 import './App.css';
 import React, { useRef, useState } from "react";
 import { Formik, Form, ErrorMessage, Field } from "formik";
-import * as htmlToImage from "html-to-image";
+// import * as htmlToImage from "html-to-image";
+import { toPng } from 'html-to-image';
 import { InputField } from './components/InputField';
 
 interface FormValues {
@@ -21,7 +22,21 @@ const App: React.FC = () => {
     if (formRef.current) {
       try {
         // await loadImages(formRef.current);
-        const dataUrl = await htmlToImage.toPng(formRef.current, {
+        // const dataUrl = await htmlToImage.toPng(formRef.current, {
+        //   width: formRef.current.offsetWidth,
+        //   height: formRef.current.offsetHeight,
+        //   style: {
+        //     transform: 'scale(1)',
+        //     transformOrigin: 'top left',
+        //   },
+        //   canvasWidth: formRef.current.offsetWidth * window.devicePixelRatio,
+        //   canvasHeight: formRef.current.offsetHeight * window.devicePixelRatio,
+        //   pixelRatio: window.devicePixelRatio,
+        // });
+
+
+        // await loadImages(ref.current);
+        const dataUrl = await toPng(formRef.current, {
           width: formRef.current.offsetWidth,
           height: formRef.current.offsetHeight,
           style: {
